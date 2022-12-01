@@ -5,8 +5,16 @@ fn main() {
 	inputs := os.read_file('Day01.txt')!
 	data := process_data(inputs)!
 
-	println(max(data)!)
-	println(sum(data[0..3])!)
+	println(part1(data)!)
+	println(part2(data)!)
+}
+
+fn part1() !int {
+	return max(data)!
+}
+
+fn part2() !int {
+	return sum(data[0..3])!
 }
 
 fn process_data(data string) ![]int {
