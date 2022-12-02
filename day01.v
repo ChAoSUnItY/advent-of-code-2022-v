@@ -1,8 +1,8 @@
 import os { read_file }
-import arrays { sum, max }
+import arrays { max, sum }
 
 fn main() {
-	inputs := os.read_file('Day01.txt')!
+	inputs := read_file('Day01.txt')!
 	data := process_data(inputs)!
 
 	println(part1(data)!)

@@ -15,7 +15,7 @@ enum Predict {
 
 struct Strategy {
 	response Response
-	predict Predict
+	predict  Predict
 }
 
 fn main() {
@@ -40,7 +40,9 @@ fn strategy1(strategy []Response) int {
 
 	if opponent == self {
 		score += 3
-	} else if (self == .rock && opponent == .scissors) || (self == .paper && opponent == .rock) || (self == .scissors && opponent == .paper) {
+	} else if (self == .rock && opponent == .scissors)
+		|| (self == .paper && opponent == .rock)
+		|| (self == .scissors && opponent == .paper) {
 		score += 6
 	}
 
@@ -50,7 +52,7 @@ fn strategy1(strategy []Response) int {
 fn strategy2(strategy Strategy) int {
 	response := strategy.response
 	mut score := int(strategy.predict) * 3
-	
+
 	return match strategy.predict {
 		.lose {
 			score + match response {
