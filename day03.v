@@ -1,5 +1,5 @@
 import os { read_file }
-import arrays { sum, chunk, reduce }
+import arrays { chunk, reduce, sum }
 
 fn main() {
 	data := read_file('Day03.txt')!
