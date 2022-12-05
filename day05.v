@@ -6,19 +6,19 @@ import datatypes { DoublyLinkedList }
 const digit_r = r'\d+'
 
 struct ParseResult {
-	stacks []DoublyLinkedList[u8]
+	stacks       []DoublyLinkedList[u8]
 	instructions []Instruction
 }
 
 struct Instruction {
 	count int
-	from int
-	to int
+	from  int
+	to    int
 }
 
 fn main() {
 	data := read_file('Day05.txt')!
-	
+
 	println(part1(process_data(data))!)
 	println(part2(process_data(data))!)
 }
@@ -27,7 +27,7 @@ fn part1(data ParseResult) !string {
 	mut stack := data.stacks.clone()
 
 	for instruction in data.instructions {
-		for _ in 0..instruction.count {
+		for _ in 0 .. instruction.count {
 			popped := stack[instruction.from - 1].pop_front() or { 0 }
 			stack[instruction.to - 1].push_front(popped)
 		}
@@ -42,7 +42,7 @@ fn part2(data ParseResult) !string {
 	for instruction in data.instructions {
 		mut popped := DoublyLinkedList[u8]{}
 
-		for _ in 0..instruction.count {
+		for _ in 0 .. instruction.count {
 			popped.push_front(stack[instruction.from - 1].pop_front() or { 0 })
 		}
 
@@ -56,16 +56,13 @@ fn part2(data ParseResult) !string {
 
 fn process_data(data string) ParseResult {
 	split_data := data.replace('\r\n', '\n').split('\n\n')
-	return ParseResult{
-		process_stack(split_data[0]),
-		process_instructions(split_data[1])
-	}
+	return ParseResult{process_stack(split_data[0]), process_instructions(split_data[1])}
 }
 
 fn process_stack(data string) []DoublyLinkedList[u8] {
 	splitted_data := data.split('\n')#[..-1]
 	stack_size := (splitted_data[0].len + 1) / 4
-	mut stacks := []DoublyLinkedList[u8]{ len: stack_size, init: DoublyLinkedList[u8]{} }
+	mut stacks := []DoublyLinkedList[u8]{len: stack_size, init: DoublyLinkedList[u8]{}}
 
 	for line in splitted_data {
 		for i, element in chunk(line.bytes(), 4) {

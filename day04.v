@@ -1,8 +1,8 @@
 import os { read_file }
-import arrays { sum, reduce }
+import arrays { reduce, sum }
 
 fn main() {
-	data := os.read_file('Day04.txt')!
+	data := read_file('Day04.txt')!
 	processed_data := process_data(data)
 
 	println(part1(processed_data)!)
@@ -22,9 +22,9 @@ fn part2(data [][][]int) !int {
 }
 
 fn from_range(range []int) []int {
-	mut result := []int{ cap: range[1] - range[0] }
+	mut result := []int{cap: range[1] - range[0]}
 
-	for i in range[0]..range[1] + 1 {
+	for i in range[0] .. range[1] + 1 {
 		result << i
 	}
 
