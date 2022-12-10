@@ -3,9 +3,9 @@ import arrays { fold }
 
 interface Cyclable {
 mut:
-	run_cycle()
 	cycle int
 	register_x int
+	run_cycle()
 }
 
 fn (mut c Cyclable) run_instruction(instruction string) Cyclable {
@@ -43,7 +43,7 @@ fn (mut state CycleState) run_cycle() {
 struct CrtState {
 mut:
 	cycle      int
-	register_x int = 1
+	register_x int      = 1
 	crt_image  []string = []
 }
 
