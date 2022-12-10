@@ -1,5 +1,5 @@
 import os { read_file }
-import arrays { flat_map, flat_map_indexed, map_indexed, max, fold }
+import arrays { flat_map, flat_map_indexed, fold, map_indexed, max }
 
 fn main() {
 	data := read_file('Day08.txt')!
@@ -44,7 +44,7 @@ fn part2(data [][]int) !int {
 				}
 
 				return count
-			}), 1, fn (acc int, elem int) int { 
+			}), 1, fn (acc int, elem int) int {
 				return acc * elem
 			})
 		})
@@ -52,7 +52,8 @@ fn part2(data [][]int) !int {
 }
 
 fn range(size int, start int) [][]int {
-	return [[]int{len: start, init: start - it - 1}, []int{len: size - start - 1, init: start + 1 + it}]
+	return [[]int{len: start, init: start - it - 1}, []int{len: size - start - 1, init: start + 1 +
+		it}]
 }
 
 fn grid_cross_walk(size int, start_x int, start_y int) [][]int {
@@ -64,5 +65,3 @@ fn grid_cross_walk(size int, start_x int, start_y int) [][]int {
 fn process_data(data string) [][]int {
 	return data.replace('\r\n', '\n').split('\n').map(it.split('').map(it.int()))
 }
-
-
