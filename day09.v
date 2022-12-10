@@ -16,7 +16,7 @@ fn (p &Position) offset_y(y int) Position {
 
 fn (p &Position) offset(x int, y int) Position {
 	return Position{
-		x: p.x + x,
+		x: p.x + x
 		y: p.y + y
 	}
 }
@@ -59,7 +59,7 @@ fn (p &Position) str() string {
 
 struct Instruction {
 	direction u8
-	steps int
+	steps     int
 }
 
 fn main() {
